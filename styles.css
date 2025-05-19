@@ -13,45 +13,41 @@ body {
   text-decoration: underline !important;
   text-align: left !important;
 }
-/*FIN ESTILOS GENERALES*/
-/*ESTILO DEL BODY*/
-section {
-  color: white !important;
-}
 h2 {
   margin: 40px 0 !important;
   text-align: center;
   color: #12578e !important;
   font-weight: 700 !important;
 }
-/*SLIDER */
-#sliderPrincipal {
-  padding: 0 500px;
-  margin: 40px 0px;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-}
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  border: 5px solid #12578e;
-}
-/* FIN DE SLIDER */
-#textoPrincipal {
-  background-color: #12578e !important;
-  text-align: justify !important;
-  padding: 3rem;
-  border-radius: 20px;
-  color: white;
-  min-width: 500px;
-  max-width: 1300px;
-}
-#textoPrincipal > p {
-  text-align: left !important;
+/*FIN ESTILOS GENERALES*/
+/*CAROUSEL */
+.carousel-inner {
+  border: 10px solid #12578e;
+  border-radius: 50px;
 }
 
+.border-carousel {
+  border-radius: 100px;
+  border: 5px solid #12578e;
+}
+
+@media (max-width: 768px) {
+  .fs-5 {
+    padding: 0 10px;
+    text-align: center;
+  }
+}
+
+/* FIN DE CAROUSEL */
+.text-justify {
+  text-align: justify;
+}
+
+#textoPrincipal {
+  background-color: #12578e !important;
+}
+
+/*CARDS*/
 .section-title {
   color: white !important;
   font-weight: bold !important;
@@ -75,7 +71,7 @@ h2 {
   height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid #E7A051;
+  border: 5px solid #e7a051;
   margin-bottom: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -84,14 +80,24 @@ h2 {
   padding-top: 1rem;
   font-weight: 600;
   font-size: 1.6rem;
-  color: #E7A051;
+  color: #e7a051;
 }
 
 .card-wrapper {
   text-align: center;
 }
 
-/*TERMINA EL ESTILO DEL BODY*/
+/*FIN DE CARDS*/
+/*ESTILOS CAROUSEL TESTIMONIOS*/
+.testimonial-box {
+  max-width: 700px;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/*FIN ESTILOS DE CAROUSEL TESTIMONIOS*/
+
 /*ESTILO DEL FOOTER*/
 footer {
   background-color: #2d2d2d;

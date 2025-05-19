@@ -1,7 +1,8 @@
 <style>
-    footer{
-        padding-top:30px;
+    footer {
+        padding-top: 30px;
     }
+
     p {
         text-align: center;
     }
@@ -16,14 +17,17 @@
         list-style: none;
         padding: 10px;
     }
-    .enlaces a{
+
+    .enlaces a {
         text-decoration: none;
         color: white;
         font-weight: bold;
     }
-    .enlaces a:hover{
+
+    .enlaces a:hover {
         text-decoration: underline;
     }
+
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +39,9 @@
 </head>
 
 <body>
+    <div class="img-footer" style="text-align: center;">
+        <img src="recursos/img/img-footer.png" alt="Mascotas" style="width: 60%; ">
+    </div>
     <footer>
         <p class="enlaces"><a href="politicaPrivacidad.php">Política de privacidad</a> | <a href="terminosUso.php">Términos de uso</a></p>
         <p>&copy; 2025 KinderGest. Todos los derechos reservados.</p>
