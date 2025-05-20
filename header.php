@@ -69,7 +69,7 @@
                         <!-- Menú navegación -->
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Sobre nosotros</a>
@@ -90,7 +90,8 @@
                                     <img src="recursos/icons/buscar.svg" alt="lupa" width="20" height="20">
                                 </div>
                             </div>
-                            <button id="login" class="btn btn-primary" type="button">LOGIN</button>
+                            <a href="login.php"><button id="login" class="btn btn-primary" type="button">LOGIN</button></a>
+
                         </div>
                     </div>
                 </div>
