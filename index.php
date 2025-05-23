@@ -10,6 +10,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+<style>
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-size: 100% 100%;
+    }
+</style>
 
 <body>
     <?php
@@ -77,9 +88,9 @@
     <section class="container my-5">
         <div class="row align-items-center">
 
-            <div class="col-md-5 mb-4 mb-md-0 text-left" style="padding-right: 200px;">
-                <h3 style="color: black;"><strong>¿Cual es nuestro propósito?</strong></h3>
-                <p class="fs-5" style="color: black;text-align: left;">
+            <div class="col-md-5 mb-4 mb-md-0 text-left" style="padding-right: 100px;">
+                <h3 style="color: black;min-width: 300px;"><strong>¿Cual es nuestro propósito?</strong></h3>
+                <p class="fs-5" style="color: black;text-align: left;min-width: 300px;">
                     En <strong>KinderGest</strong>, transformamos la gestión de guarderías con herramientas digitales intuitivas y seguras.
                     Nuestro sistema te permite simplificar tareas administrativas, mejorar la comunicación con las familias y dedicar más tiempo a lo que realmente importa:
                     el bienestar y desarrollo de los niños.

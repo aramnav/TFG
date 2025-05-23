@@ -72,7 +72,7 @@
                                 <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre nosotros</a>
+                                <a class="nav-link" href="sobre_nosotros.php">Sobre nosotros</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#">Precios</a>
