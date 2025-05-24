@@ -75,7 +75,7 @@
                                 <a class="nav-link" href="sobre_nosotros.php">Sobre nosotros</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#">Precios</a>
+                                <a class="nav-link" href="precios.php">Precios</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#">Contacto</a>

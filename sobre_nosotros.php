@@ -79,7 +79,7 @@
                     <div class="icon-box text-center">
                         <i class="fas fa-user-check"></i>
                         <h5 class="mt-3">Matriculación y asistencia</h5>
-                        <p>Control simple y eficiente de inscripciones y asistencia diaria.</p>
+                        <p>Control eficiente de inscripciones y asistencia diaria.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -96,7 +96,6 @@
                         <p>Informes diarios y comunicación fluida con las familias.</p>
                     </div>
                 </div>
-                <!-- Agrega más icon-box según necesites -->
             </div>
         </div>
     </section>
