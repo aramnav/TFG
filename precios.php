@@ -67,9 +67,10 @@
 
 <body>
     <?php include 'header.php'; ?>
-    <section class="py-5 text-center" style="background-color: white;">
+    <h1>Precios</h1>
+
+    <section class="py-3 text-center" style="background-color: white;">
         <div class="container">
-            <h2>Precios</h2>
             <p class="mb-3 text-justify">
                 En KinderGest, sabemos que cada guardería es única, por eso ofrecemos planes flexibles que se
                 adaptan a las necesidades reales de tu centro. Ya seas una pequeña guardería familiar o una red
@@ -98,7 +99,7 @@
                                 <li>✔️ Soporte por email</li>
                             </ul>
                             <div class="text-center mt-auto">
-                                <a href="contacto.php" class="btn" style="background-color: #F28B82; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
+                                <a href="contacto.php#formulario" class="btn" style="background-color: #F28B82; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
                             </div>
                         </div>
                     </div>
@@ -117,7 +118,7 @@
                                 <li>✔️ Acceso multiusuario con roles</li>
                             </ul>
                             <div class="text-center mt-auto">
-                                <a href="contacto.php" class="btn" style="background-color: #A3D9A5; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
+                                <a href="contacto.php#formulario" class="btn" style="background-color: #A3D9A5; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
                             </div>
                         </div>
                     </div>
@@ -136,7 +137,7 @@
                                 <li>✔️ Copias de seguridad diarias</li>
                             </ul>
                             <div class="text-center mt-auto">
-                                <a href="contacto.php" class="btn" style="background-color: #AEDFF7; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
+                                <a href="contacto.php#formulario" class="btn" style="background-color: #AEDFF7; color:white; padding:10px 25px; font-weight: bold;">Más información</a>
                             </div>
                         </div>
                     </div>
@@ -158,7 +159,7 @@
                         a tu medida.
                     </p>
 
-                    <a href="contacto.php" class="btn mt-3" style="background-color:#12578e; color:white; font-weight: bold; padding:10px 25px; border-radius: 8px;">¡Contáctanos!</a>
+                    <a href="contacto.php#formulario" class="btn mt-3" style="background-color:#12578e; color:white; font-weight: bold; padding:10px 25px; border-radius: 8px;">¡Contáctanos!</a>
                 </div>
 
 

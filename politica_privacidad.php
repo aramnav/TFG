@@ -33,7 +33,7 @@
     include 'header.php';
     ?>
 
-    <h2>Política de privacidad</h2>
+    <h1>Política de privacidad</h1>
     <div class="contenido" style="padding: 0 100px;">
         <p class="text-justify">
             En KinderGest, nos tomamos muy en serio la protección de tus datos personales. Esta Política de Privacidad

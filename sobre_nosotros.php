@@ -8,16 +8,10 @@
     <link rel="shortcut icon" href="recursos/img/Logo_sin_letra_sin_fondo.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     <style>
         .section-bg {
             padding: 60px 20px;
-        }
-
-        .section-title {
-            color: #12578e;
-            font-weight: bold;
-            margin-bottom: 30px;
         }
 
         .icon-box {
@@ -33,8 +27,8 @@
         }
 
         .icon-box i {
-            font-size: 2rem;
-            color: #12578e;
+            font-size: 2rem !important;
+            color: #12578e !important;
         }
 
         .container-max {
@@ -53,12 +47,12 @@
 
 <body>
     <?php include 'header.php'; ?>
+    <h1>Sobre nosotros</h1>
 
-    <section class="section-bg text-center">
+    <section class="section-bg py-2 text-center">
         <div class="container container-max">
-            <h2 class="section-title" style="color:#12578e !important">Sobre nosotros</h2>
 
-            <img src="recursos/img/equipo.png" alt="Equipo" class="hero-image">
+            <img src="recursos/img/equipo.jpg" alt="Equipo" class="hero-image" style="border: 5px solid #12578e;">
 
             <p class="lead">En KinderGest, creemos que la educación infantil merece herramientas modernas, accesibles y seguras. Nuestra misión es apoyar a las guarderías y familias con tecnologías que simplifican procesos, fortalecen la comunicación y mejoran el día a día.</p>
         </div>
@@ -75,27 +69,31 @@
         <div class="container container-max">
             <h3 class="section-title text-center" style="color:#12578e !important">¿Qué Hacemos?</h3>
             <div class="row g-4">
+
                 <div class="col-md-4">
                     <div class="icon-box text-center">
-                        <i class="fas fa-user-check"></i>
+                        <img src="recursos/icons/user-check.svg" alt="Matriculación y asistencia" style="width:2rem; height:2rem;">
                         <h5 class="mt-3">Matriculación y asistencia</h5>
                         <p>Control eficiente de inscripciones y asistencia diaria.</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="icon-box text-center">
-                        <i class="fas fa-users"></i>
+                        <img src="recursos/icons/users.svg" alt="Gestión del personal" style="width:2rem; height:2rem;">
                         <h5 class="mt-3">Gestión del personal</h5>
                         <p>Organización de horarios y funciones del equipo educativo.</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="icon-box text-center">
-                        <i class="fas fa-heart"></i>
+                        <img src="recursos/icons/heart.svg" alt="Seguimiento del niño" style="width:2rem; height:2rem;">
                         <h5 class="mt-3">Seguimiento del niño</h5>
                         <p>Informes diarios y comunicación fluida con las familias.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -107,34 +105,39 @@
 
             <h3 class="section-title text-center mt-5">Nuestros Valores</h3>
             <div class="row g-4">
+
                 <div class="col-md-3 col-6">
                     <div class="icon-box text-center">
-                        <i class="fas fa-handshake"></i>
+                        <img src="recursos/icons/handshake.svg" alt="Compromiso" style="width:2rem; height:2rem;">
                         <p><strong>Compromiso</strong></p>
                         <p>Servicio a medida y acompañamiento real.</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-6">
                     <div class="icon-box text-center">
-                        <i class="fas fa-lightbulb"></i>
+                        <img src="recursos/icons/lightbulb.svg" alt="Innovación" style="width:2rem; height:2rem;">
                         <p><strong>Innovación</strong></p>
                         <p>Mejora constante en cada función y herramienta.</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-6">
                     <div class="icon-box text-center">
-                        <i class="fas fa-lock"></i>
+                        <img src="recursos/icons/lock.svg" alt="Confianza" style="width:2rem; height:2rem;">
                         <p><strong>Confianza</strong></p>
                         <p>Protegemos tus datos con seguridad avanzada.</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-6">
                     <div class="icon-box text-center">
-                        <i class="fas fa-heart"></i>
+                        <img src="recursos/icons/hand-holding-heart.svg" alt="Empatía" style="width:2rem; height:2rem;">
                         <p><strong>Empatía</strong></p>
                         <p>Conectamos con las personas que cuidan niños.</p>
                     </div>
                 </div>
+
             </div>
 
             <h3 class="section-title text-center mt-5" style="color:#12578e !important">Nuestro Compromiso</h3>

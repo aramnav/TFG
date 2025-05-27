@@ -33,7 +33,7 @@
     include 'header.php';
     ?>
 
-    <h2>Términos de uso</h2>
+    <h1>Términos de uso</h1>
     <div class="contenido" style="padding: 0 100px;">
         <p class="text-justify">
             Bienvenido/a a KinderGest. Te rogamos que leas detenidamente estos Términos y Condiciones de Uso antes de utilizar nuestra página web y nuestros servicios.

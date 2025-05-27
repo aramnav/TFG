@@ -9,16 +9,32 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
 </head>
 <style>
-    .carousel-control-prev,
-    .carousel-control-next {
+    .swiper-button-prev,
+    .swiper-button-next {
         width: 5%;
+        color: white;
     }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 1.5rem;
         background-size: 100% 100%;
+    }
+
+
+    .testimonial-box {
+        max-width: 700px;
+        text-align: left;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    #testimonios {
+        cursor: grab;
     }
 </style>
 
@@ -27,13 +43,13 @@
     include 'header.php';
     ?>
 
-    <h2>¡Bienvenidos a KinderGest!</h2>
+    <h1>¡Bienvenidos a KinderGest!</h1>
 
     <div class="container my-4">
         <div id="textoPrincipal" class="bg-primary text-white rounded-4 shadow p-4 p-md-5">
-            <div class="text-center mb-4">
-                <h4 class="fw-bold">Tu aliado digital en la gestión de escuelas infantiles</h4>
-            </div>
+            <p class="text-justify">
+                Tu aliado digital en la gestión de escuelas infantiles
+            </p>
 
             <p class="text-justify">
                 En <strong>KinderGest</strong>, transformamos la forma en que las guarderías y centros infantiles gestionan su día a día.
@@ -65,7 +81,7 @@
     <div class="container-fluid py-5 text-center" style="background-color: #E7A051; margin-top: 5rem;">
         <h2 class="section-title">Diseñado para:</h2>
 
-        <div class="d-flex justify-content-around flex-wrap" style="padding: 0 100px;">
+        <div class="container d-flex justify-content-around flex-wrap">
 
             <div class="card-custom card-wrapper m-3" style="width: 300px; min-height: 320px;">
                 <img src="recursos/img/vista-de-angulo-alta-de-dibujo-ninos.jpg" class="circle-image" alt="Escuelas infantiles">
@@ -116,68 +132,63 @@
         </div>
     </section>
 
-    <section class="text-white py-5" style="background-color: #12578e;">
+    <section class="text-white" style="background-color: #12578e; padding-top: 10px;">
         <div class="container">
-            <h2 class="text-center mb-4" style="color: white !important;">Experiencias de nuestros clientes</h2>
+            <h2 class="text-center" style="color: white !important;padding: 0px;">Experiencias de nuestros clientes</h2>
 
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
+            <div id="testimonios" class="swiper mySwiper">
+                <div class="swiper-wrapper" style="color: white;">
 
-                    <div class="carousel-item active">
-                        <div class="d-flex justify-content-center">
-                            <div class="testimonial-box">
-                                <p class="mb-2" style="text-align:left">⭐️⭐️⭐️⭐️⭐️</p>
-                                <h5 class="fw-bold">Excelente herramienta para guarderías</h5>
-                                <p class="mb-2" style="text-align:justify">
-                                    Desde que usamos el sistema de gestión de KinderGest, todo es más fácil: control de asistencia,
-                                    comunicación con padres, informes y gestión de inscripciones. La plataforma es clara, rápida y el
-                                    soporte técnico siempre responde. Muy recomendable para cualquier centro infantil.
-                                </p>
-                                <small class="fst-italic">— Marta, Directora de guardería</small>
-                            </div>
+                    <div class="swiper-slide d-flex justify-content-center">
+                        <div class="testimonial-box">
+                            <p class="mb-2" style="text-align:left;">⭐️⭐️⭐️⭐️⭐️</p>
+                            <h5 class="fw-bold">Excelente herramienta para guarderías</h5>
+                            <p class="mb-2" style="text-align:justify">
+                                Desde que usamos el sistema de gestión de KinderGest, todo es más fácil: control de
+                                asistencia,
+                                comunicación con padres, informes y gestión de inscripciones. La plataforma es clara,
+                                rápida y el
+                                soporte técnico siempre responde. Muy recomendable para cualquier centro infantil.
+                            </p>
+                            <small class="fst-italic">— Marta, Directora de guardería</small>
                         </div>
                     </div>
 
-                    <div class="carousel-item">
-                        <div class="d-flex justify-content-center">
-                            <div class="testimonial-box">
-                                <p class="mb-2" style="text-align:left">⭐️⭐️⭐️⭐️⭐️</p>
-                                <h5 class="fw-bold">Una solución integral y fácil de usar</h5>
-                                <p class="mb-2" style="text-align:justify">
-                                    Desde que implementamos KinderGest, la organización diaria de nuestra guardería ha mejorado notablemente.
-                                    Podemos registrar asistencia, compartir fotos y noticias con las familias, y llevar un control preciso
-                                    de cada niño. El equipo de soporte es excelente y siempre están disponibles para ayudarnos.
-                                </p>
-                                <small class="fst-italic">— Luis, Coordinador de centro infantil</small>
-                            </div>
+                    <div class="swiper-slide d-flex justify-content-center">
+                        <div class="testimonial-box">
+                            <p class="mb-2" style="text-align:left">⭐️⭐️⭐️⭐️⭐️</p>
+                            <h5 class="fw-bold">Una solución integral y fácil de usar</h5>
+                            <p class="mb-2" style="text-align:justify">
+                                Desde que implementamos KinderGest, la organización diaria de nuestra guardería ha
+                                mejorado notablemente.
+                                Podemos registrar asistencia, compartir fotos y noticias con las familias, y llevar un
+                                control preciso
+                                de cada niño. El equipo de soporte es excelente y siempre están disponibles para
+                                ayudarnos.
+                            </p>
+                            <small class="fst-italic">— Luis, Coordinador de centro infantil</small>
                         </div>
                     </div>
 
-                    <div class="carousel-item">
-                        <div class="d-flex justify-content-center">
-                            <div class="testimonial-box">
-                                <p class="mb-2" style="text-align:left">⭐️⭐️⭐️⭐️⭐️</p>
-                                <h5 class="fw-bold">Facilita la comunicación con las familias</h5>
-                                <p class="mb-2" style="text-align:justify">
-                                    Lo que más valoramos de KinderGest es cómo ha mejorado la relación con los padres.
-                                    Ahora pueden recibir informes diarios, fotos y mensajes en tiempo real. Es una
-                                    herramienta muy intuitiva y segura, que nos ahorra tiempo y mejora la confianza
-                                    con las familias.
-                                </p>
-                                <small class="fst-italic">— Ana, Educadora infantil</small>
-                            </div>
+                    <div class="swiper-slide d-flex justify-content-center">
+                        <div class="testimonial-box">
+                            <p class="mb-2" style="text-align:left">⭐️⭐️⭐️⭐️⭐️</p>
+                            <h5 class="fw-bold">Facilita la comunicación con las familias</h5>
+                            <p class="mb-2" style="text-align:justify">
+                                Lo que más valoramos de KinderGest es cómo ha mejorado la relación con los padres.
+                                Ahora pueden recibir informes diarios, fotos y mensajes en tiempo real. Es una
+                                herramienta muy intuitiva y segura, que nos ahorra tiempo y mejora la confianza
+                                con las familias.
+                            </p>
+                            <small class="fst-italic">— Ana, Educadora infantil</small>
                         </div>
                     </div>
-
 
                 </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
+                <div class="swiper-button-prev" style="color:lightgray;"></div>
+                <div class="swiper-button-next" style="color:lightgray;"></div>
+
             </div>
         </div>
     </section>
@@ -187,6 +198,10 @@
     <?php
     include 'footer.php';
     ?>
+
+
+
+
 </body>
 
 </html>

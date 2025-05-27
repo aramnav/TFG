@@ -18,7 +18,7 @@
     include 'header.php';
     ?>
 
-    <h2 style="padding: 20px;">Iniciar Sesión</h2>
+    <h1 style="padding: 20px;">Iniciar Sesión</h1>
     <div class="container-fluid position-relative p-0" style="min-height: 100vh; background: url('recursos/img/foto_login.jpg') no-repeat center center; background-size: cover;">
 
         <div class="position-absolute start-50 translate-middle-x w-100 d-flex justify-content-center px-3" style="top: 5%;">
