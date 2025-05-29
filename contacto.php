@@ -41,6 +41,23 @@
 <body>
     <?php include 'header.php'; ?>
 
+    <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mensajeModalLabel">Mensaje de contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="contenidoModal">
+                </div>
+                <div class="justify-content-center mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <h1>Contacto</h1>
     <div class="container px-3">
         <p class="text-justify mx-auto" style="max-width: 600px;">
@@ -51,14 +68,14 @@
         <h3 id="formulario" class="text-center mt-4">Formulario de contacto</h3>
 
         <div class="formulario-contacto mx-auto shadow-sm" style="max-width: 600px;">
-            <form>
+            <form id="formulario_correo" method="POST">
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo electrónico:</label>
-                    <input type="email" class="form-control" id="correo" required style="border: 1px solid #12578e; border-radius: 12px;">
+                    <input type="email" class="form-control" id="correo" name="email" required style="border: 1px solid #12578e; border-radius: 12px;">
                 </div>
                 <div class="mb-3">
                     <label for="mensaje" class="form-label">Mensaje:</label>
-                    <textarea class="form-control" id="mensaje" rows="4" required style="border: 1px solid #12578e; border-radius: 12px;"></textarea>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required style="border: 1px solid #12578e; border-radius: 12px;"></textarea>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary px-4 py-2" style="font-weight: 600;">Enviar tu mensaje</button>
@@ -66,6 +83,8 @@
             </form>
         </div>
     </div>
+
+
 
 
     <div class="container text-center mt-5 mb-4">
@@ -106,6 +125,38 @@
         //AL SALIR DE DE LA ZONA DEL MAPA DESACTIVAMOS EL ZOOM
         mapa.on('mouseout', function() {
             mapa.scrollWheelZoom.disable();
+        });
+
+
+        document.getElementById('formulario_correo').addEventListener('submit', function(e) {
+            e.preventDefault(); // No recarga la página
+
+            const formData = new FormData(this);
+
+            fetch('enviar_correo.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.text())
+                .then(res => {
+                    const modalContent = document.getElementById('contenidoModal');
+                    const mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
+
+                    if (res.trim() === "ok") {
+                        modalContent.innerHTML = "¡Mensaje enviado correctamente!";
+                        mensajeModal.show();
+                        document.getElementById('formulario_correo').reset();
+                    } else {
+                        modalContent.innerHTML = "❌ Error al enviar el mensaje: " + res;
+                        mensajeModal.show();
+                    }
+                })
+                .catch(err => {
+                    const modalContent = document.getElementById('contenidoModal');
+                    modalContent.innerHTML = "❌ Error de red: " + err;
+                    const mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
+                    mensajeModal.show();
+                });
         });
     </script>
 
