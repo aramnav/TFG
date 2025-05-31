@@ -54,7 +54,7 @@
 
 <body>
     <div class="img-footer" style="text-align: center;">
-        <img src="recursos/img/img-footer.png" alt="Mascotas" style="width: 60%; ">
+        <img src="recursos/img/img-footer.webp" alt="Mascotas" style="width: 60%; ">
     </div>
     <footer>
         <p class="enlaces"><a href="politica_privacidad.php">Política de privacidad</a> | <a href="terminos_uso.php">Términos de uso</a></p>

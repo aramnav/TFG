@@ -52,7 +52,7 @@
     <section class="section-bg py-2 text-center">
         <div class="container container-max">
 
-            <img src="recursos/img/equipo.jpg" alt="Equipo" class="hero-image" style="border: 5px solid #12578e;">
+            <img src="recursos/img/equipo.webp" alt="Equipo" class="hero-image" style="border: 5px solid #12578e;">
 
             <p class="lead">En KinderGest, creemos que la educación infantil merece herramientas modernas, accesibles y seguras. Nuestra misión es apoyar a las guarderías y familias con tecnologías que simplifican procesos, fortalecen la comunicación y mejoran el día a día.</p>
         </div>
