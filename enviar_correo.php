@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>';
 
             $mail->send();
-            echo "ok"; // Mensaje para JavaScript
+            echo "ok";
         } catch (Exception $e) {
             echo "error: {$mail->ErrorInfo}";
         }

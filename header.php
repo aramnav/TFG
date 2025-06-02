@@ -1,3 +1,17 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Proceso logout aquí mismo
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <style>
     * {
         margin: 0;
@@ -139,6 +153,7 @@
 </style>
 
 
+
 <header>
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid align-items-center px-3 position-relative">
@@ -159,9 +174,44 @@
                         <img src="recursos/icons/buscar.svg" alt="lupa" width="20" height="20">
                     </div>
                 </div>
-                <a href="login.php">
-                    <button id="login" class="btn btn-sm ms-lg-2">LOGIN</button>
-                </a>
+                <?php if (isset($_SESSION['usuario_nombre'])): ?>
+
+                    <div class="dropdown ms-lg-2">
+                        <button class="btn dropdown-toggle d-flex align-items-center px-3 py-2"
+                            style="background-color: #12578E; color: white; border-radius: 6px; font-size: 16px;"
+                            type="button"
+                            id="dropdownUsuario"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <?= htmlspecialchars($_SESSION['usuario_nombre']) ?>
+                        </button>
+
+
+                        <ul class="dropdown-menu dropdown-menu-end py-2" aria-labelledby="dropdownUsuario" style="margin-top: 0.25rem;">
+                            <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
+                                <li><a class="dropdown-item" href="vista_admin.php">Panel de administración</a></li>
+                            <?php elseif ($_SESSION['usuario_rol'] === 'profesor'): ?>
+                                <li><a class="dropdown-item" href="vista_profe.php">Pasar lista</a></li>
+                            <?php else: ?>
+                                <li><a class="dropdown-item" href="vista_padre.php">Perfil</a></li>
+                            <?php endif; ?>
+                            <li>
+                                <form action="" method="post" class="m-0">
+                                    <button type="submit" name="logout" class="dropdown-item text-danger">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                <?php else: ?>
+                    <a href="login.php">
+                        <button id="login" class="btn btn-sm ms-lg-2" style="background-color: #12578E; color: white; font-size: 16px; border-radius: 6px;">
+                            LOGIN
+                        </button>
+                    </a>
+                <?php endif; ?>
+
             </div>
 
             <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
