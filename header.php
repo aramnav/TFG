@@ -1,15 +1,18 @@
 <?php
+//Si no se ha iniciado la sesión, iniciarla
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Proceso logout aquí mismo
+// Proceso logout
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
     header('Location: login.php');
     exit();
 }
+
+
 ?>
 
 <style>
@@ -174,7 +177,7 @@ if (isset($_POST['logout'])) {
                         <img src="recursos/icons/buscar.svg" alt="lupa" width="20" height="20">
                     </div>
                 </div>
-                <?php if (isset($_SESSION['usuario_nombre'])): ?>
+                <?php if (isset($_SESSION['usuario']['nombre'])): ?>
 
                     <div class="dropdown ms-lg-2">
                         <button class="btn dropdown-toggle d-flex align-items-center px-3 py-2"
@@ -183,14 +186,14 @@ if (isset($_POST['logout'])) {
                             id="dropdownUsuario"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <?= htmlspecialchars($_SESSION['usuario_nombre']) ?>
+                            <?= htmlspecialchars($_SESSION['usuario']['nombre']) ?>
                         </button>
 
 
                         <ul class="dropdown-menu dropdown-menu-end py-2" aria-labelledby="dropdownUsuario" style="margin-top: 0.25rem;">
-                            <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
+                            <?php if ($_SESSION['usuario']['rol'] === 'admin'): ?>
                                 <li><a class="dropdown-item" href="vista_admin.php">Panel de administración</a></li>
-                            <?php elseif ($_SESSION['usuario_rol'] === 'profesor'): ?>
+                            <?php elseif ($_SESSION['usuario']['rol'] === 'profesor'): ?>
                                 <li><a class="dropdown-item" href="vista_profe.php">Pasar lista</a></li>
                             <?php else: ?>
                                 <li><a class="dropdown-item" href="vista_padre.php">Perfil</a></li>

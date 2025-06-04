@@ -3,20 +3,19 @@ session_start();
 require 'const/conexion.php';
 
 $error = "";
-
-if (isset($_POST['btnLogin'])) {
+if (!$conexion) {
+    $error = "No se pudo conectar a la base de datos. Intentalo más tarde.";
+} else if (isset($_POST['btnLogin'])) {
 
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
     // CONSULTA BD
-    $consulta = "SELECT * FROM usuarios WHERE email = ? AND activo = 1 LIMIT 1";
+    $consulta = "SELECT * FROM usuarios WHERE email = ? ";
     $sentencia = $conexion->prepare($consulta);
     $sentencia->execute([$email]);
     $resultado = $sentencia->get_result();
     $usuario = $resultado->fetch_assoc();
-
-    var_dump($usuario);
 
     //COMPRUEBA CONTRASEÑA Y REDIRECCIONA
     if (!$usuario) {
@@ -25,11 +24,36 @@ if (isset($_POST['btnLogin'])) {
         $error = "Tu cuenta está bloqueada. Contacta con el administrador.";
     } else {
         if (password_verify($password, $usuario['contrasenya'])) {
+            // Ayuda con la seguridad de la sesión
             session_regenerate_id(true);
 
-            $_SESSION['usuario_id'] = $usuario['id_usuario'];
-            $_SESSION['usuario_nombre'] = $usuario['nombre'];
-            $_SESSION['usuario_rol'] = $usuario['rol'];
+            $_SESSION['usuario'] = $usuario;
+
+            $url = DIR_SERV . "/token";
+            $datos_env["id_usuario"] = $_SESSION["usuario"]["id_usuario"];
+            $respuesta = consumir_servicios_REST($url, "POST", $datos_env);
+            $json_respuesta = json_decode($respuesta, true);
+
+            if (!$json_respuesta) {
+                session_destroy();
+                die("Error 1");
+            }
+            if (isset($json_respuesta["error"])) {
+                session_destroy();
+                die("Error 2");
+            }
+            if (isset($json_respuesta["mensaje"])) {
+                $error = "Usuario o contraseña incorrectos.";
+            }
+            $_SESSION["token"] = $json_respuesta["token"];
+
+
+
+
+
+
+
+            // Para el tiempo de inactividad
             $_SESSION['LAST_ACTIVITY'] = time();
 
             switch ($usuario['rol']) {
