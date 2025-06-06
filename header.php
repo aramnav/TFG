@@ -77,7 +77,6 @@ if (isset($_POST['logout'])) {
     }
 
 
-
     .buscar:hover input,
     .buscar input:focus {
         width: 280px;
@@ -153,6 +152,16 @@ if (isset($_POST['logout'])) {
         }
 
     }
+
+    @media (max-width: 991.98px) {
+    .dropdown-toggle {
+        max-width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
 </style>
 
 

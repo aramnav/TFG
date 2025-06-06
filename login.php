@@ -17,12 +17,13 @@ if (!$conexion) {
     $resultado = $sentencia->get_result();
     $usuario = $resultado->fetch_assoc();
 
-    //COMPRUEBA CONTRASEÑA Y REDIRECCIONA
+    
     if (!$usuario) {
         $error = "Usuario o contraseña incorrectos.";
     } else if ($usuario['activo'] == 0) {
         $error = "Tu cuenta está bloqueada. Contacta con el administrador.";
     } else {
+        //COMPRUEBA CONTRASEÑA Y CREA TOKEN
         if (password_verify($password, $usuario['contrasenya'])) {
             // Ayuda con la seguridad de la sesión
             session_regenerate_id(true);
@@ -46,12 +47,6 @@ if (!$conexion) {
                 $error = "Usuario o contraseña incorrectos.";
             }
             $_SESSION["token"] = $json_respuesta["token"];
-
-
-
-
-
-
 
             // Para el tiempo de inactividad
             $_SESSION['LAST_ACTIVITY'] = time();

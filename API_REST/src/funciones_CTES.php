@@ -131,3 +131,70 @@ function obtener_usuario($id_usuario)
     $conexion = null;
     return $respuesta;
 }
+
+function obtener_hijos($id_usuario)
+{
+    try {
+        $conexion = new PDO("mysql:host=" . SERVIDOR_BD . ";dbname=" . NOMBRE_BD, USUARIO_BD, CLAVE_BD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+    } catch (PDOException $e) {
+        $respuesta["error"] = "No he podido conectarse a la base de batos: " . $e->getMessage();
+        return $respuesta;
+    }
+
+    try {
+        $consulta = "SELECT ninos.*, aulas.nombre_aula, guarderias.nombre_guarderia, asistencia.observaciones as anotaciones
+                     FROM ninos JOIN aulas ON ninos.id_aula = aulas.id_aula
+                                JOIN guarderias ON ninos.id_guarderia = guarderias.id_guarderia
+                                LEFT JOIN asistencia ON ninos.id_nino = asistencia.id_nino AND asistencia.fecha = CURDATE()
+                    WHERE ninos.id_padre = ?;";
+        $sentencia = $conexion->prepare($consulta);
+        $sentencia->execute([$id_usuario]);
+    } catch (PDOException $e) {
+        $sentencia = null;
+        $conexion = null;
+        $respuesta["error"] = "No he podido realizarse la consulta: " . $e->getMessage();
+        return $respuesta;
+    }
+
+    if ($sentencia->rowCount() > 0 && $sentencia->rowCount() < 2) {
+        $respuesta["hijos"] = $sentencia->fetch(PDO::FETCH_ASSOC);
+    } else if ($sentencia->rowCount() > 1) {
+        $respuesta["hijos"] = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $respuesta["mensaje"] = "El hijo no se encuentra en la BD";
+    }
+
+    $sentencia = null;
+    $conexion = null;
+    return $respuesta;
+}
+
+function obtener_administradores()
+{
+    try {
+        $conexion = new PDO("mysql:host=" . SERVIDOR_BD . ";dbname=" . NOMBRE_BD, USUARIO_BD, CLAVE_BD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+    } catch (PDOException $e) {
+        $respuesta["error"] = "No he podido conectarse a la base de batos: " . $e->getMessage();
+        return $respuesta;
+    }
+
+    try {
+        $consulta = "SELECT *
+                     FROM usuarios ";
+        $sentencia = $conexion->prepare($consulta);
+        $sentencia->execute();
+    } catch (PDOException $e) {
+        $sentencia = null;
+        $conexion = null;
+        $respuesta["error"] = "No he podido realizarse la consulta: " . $e->getMessage();
+        return $respuesta;
+    }
+
+    
+        $respuesta["administradores"] = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    
+
+    $sentencia = null;
+    $conexion = null;
+    return $respuesta;
+}

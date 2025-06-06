@@ -30,4 +30,41 @@ $app->get('/usuario/{id_usuario}', function ($request) {
         echo json_encode(array("no_auth" => "No tienes permiso para usar el servicio"));
 });
 
+
+//VISTA DE PADRE
+$app->get('/hijos/{id_usuario}', function ($request) {
+
+    $test = validateToken();
+    if (is_array($test)) {
+        if (isset($test["usuario"])) {
+            if ($test["usuario"]["rol"] == "padre") {
+                echo json_encode(obtener_hijos($request->getAttribute("id_usuario")));
+            } else {
+                echo json_encode(array("no_auth" => "No tienes permiso para usar el servicio"));
+            }
+        } else {
+            echo json_encode($test);
+        }
+    } else
+        echo json_encode(array("no_auth" => "No tienes permiso para usar el servicio"));
+});
+
+//VISTA DE ADMIN
+$app->get('/administradores', function () {
+
+    $test = validateToken();
+    if (is_array($test)) {
+        if (isset($test["usuario"])) {
+            if ($test["usuario"]["rol"] == "admin") {
+                echo json_encode(obtener_administradores());
+            } else {
+                echo json_encode(array("no_auth" => "No tienes permiso para usar el servicio"));
+            }
+        } else {
+            echo json_encode($test);
+        }
+    } else
+        echo json_encode(array("no_auth" => "No tienes permiso para usar el servicio"));
+});
+
 $app->run();

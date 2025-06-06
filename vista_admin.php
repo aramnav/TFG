@@ -3,6 +3,10 @@ session_start();
 $tiempo_inactividad = 600; // 30 minutos en segundos
 require 'const/conexion.php';
 
+if (!isset($_SESSION['token'])) {
+    header("Location: login.php");
+    exit();
+}
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $tiempo_inactividad) {
     session_unset();
@@ -13,23 +17,13 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
 
 $_SESSION['LAST_ACTIVITY'] = time(); // Actualiza el tiempo de última actividad
 
+//OBTENER USUARIOS
 $headers[] = "Authorization: Bearer " . $_SESSION["token"];
-$url = DIR_SERV . "/usuario/" . $_SESSION["usuario"]["id_usuario"];
+$url = DIR_SERV . "/administradores";
 $respuesta = consumir_servicios_JWT_REST($url, "GET", $headers);
-$json_usuario = json_decode($respuesta, true);
-if (!$json_usuario) {
-    session_destroy();
-    die("ERROR 1");
-}
-if (isset($json_usuario["error"])) {
-    session_destroy();
-    die("ERROR 2");
-}
+$json_administradores = json_decode($respuesta, true);
+$administradores = $json_administradores["administradores"];
 
-if (isset($json_usuario["mensaje"])) {
-    session_destroy();
-    die("ERROR 3");
-}
 
 
 ?>
@@ -91,55 +85,87 @@ if (isset($json_usuario["mensaje"])) {
 
             <nav class="col-md-3 col-lg-2 d-md-block sidebar py-4 px-3">
                 <h4 class="text-center mb-4">Admin</h4>
-                <div class="nav flex-column">
-                    <a href="#" class="nav-link active">Usuarios</a>
-                    <a href="#" class="nav-link">Niños</a>
-                    <a href="#" class="nav-link">Padres</a>
-                    <a href="#" class="nav-link">Educadores</a>
-                    <a href="#" class="nav-link">Aulas</a>
-                    <a href="#" class="nav-link">Matriculas</a>
-                    <a href="#" class="nav-link">Eventos</a>
-                    <a href="#" class="nav-link">Mensajes</a>
+                <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="usuarios-tab" data-bs-toggle="pill" href="#usuarios" role="tab">Usuarios</a>
+                    <a class="nav-link" id="ninos-tab" data-bs-toggle="pill" href="#ninos" role="tab">Niños</a>
+                    <a class="nav-link" id="padres-tab" data-bs-toggle="pill" href="#padres" role="tab">Padres</a>
+                    <a class="nav-link" id="profesores-tab" data-bs-toggle="pill" href="#profesores" role="tab">Profesores</a>
+                    <a class="nav-link" id="aulas-tab" data-bs-toggle="pill" href="#aulas" role="tab">Aulas</a>
+                    <a class="nav-link" id="clientes-tab" data-bs-toggle="pill" href="#clientes" role="tab">Clientes</a>
+                    <a class="nav-link" id="guarderias-tab" data-bs-toggle="pill" href="#guarderias" role="tab">Guarderías</a>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 content">
-                <h2>Gestión de Usuarios</h2>
+            <div class="col-md-9 ms-sm-auto col-lg-10 content tab-content" id="v-pills-tabContent">
 
-                <div class="mb-3 text-end">
-                    <button class="btn btn-success">+ Añadir nuevo</button>
-                </div>
+                <main class="tab-pane fade show active" id="usuarios" role="tabpanel">
+                    <h2>Gestión de Usuarios</h2>
+                    <div class="mb-3 text-end">
+                        <button class="btn btn-success">+ Añadir nuevo</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle">
+                            <thead class="table-dark text-center">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Rol</th>
+                                    <th>Activo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($administradores as $admin): ?>
+                                    <tr>
+                                        <td class="text-center"><?php echo $admin["id_usuario"]; ?></td>
+                                        <td><?php echo htmlspecialchars($admin["nombre"]); ?></td>
+                                        <td><?php echo htmlspecialchars($admin["email"]); ?></td>
+                                        <td><?php echo htmlspecialchars($admin["telefono"]); ?></td>
+                                        <td class="text-center"><?php echo ucfirst($admin["rol"]); ?></td>
+                                        <td class="text-center"><?php echo $admin["activo"] ? "Sí" : "No"; ?></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-primary disabled">Editar</button>
+                                            <button class="btn btn-sm btn-danger disabled">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered align-middle">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Teléfono</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Admin</td>
-                                <td>admin@ejemplo.com</td>
-                                <td>123456789</td>
-                                <td>Administrador</td>
-                                <td class="table-actions">
-                                    <button class="btn btn-sm btn-primary">Editar</button>
-                                    <button class="btn btn-sm btn-danger">Eliminar</button>
-                                </td>
-                            </tr>
-                            <!-- Más filas -->
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </main>
+                </main>
+
+                <main class="tab-pane fade" id="ninos" role="tabpanel">
+                    <h2>Gestión de Niños</h2>
+                </main>
+
+                <main class="tab-pane fade" id="padres" role="tabpanel">
+                    <h2>Gestión de Padres</h2>
+
+                </main>
+
+                <main class="tab-pane fade" id="profesores" role="tabpanel">
+                    <h2>Gestión de Profesores</h2>
+
+                </main>
+
+                <main class="tab-pane fade" id="aulas" role="tabpanel">
+                    <h2>Gestión de Aulas</h2>
+
+                </main>
+
+                <main class="tab-pane fade" id="clientes" role="tabpanel">
+                    <h2>Gestión de Clientes</h2>
+
+                </main>
+
+                <main class="tab-pane fade" id="guarderias" role="tabpanel">
+                    <h2>Gestión de Guarderías</h2>
+
+                </main>
+            </div>
         </div>
     </div>
 
