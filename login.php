@@ -95,7 +95,7 @@ if (!$conexion) {
         <div class="position-absolute start-50 translate-middle-x w-100 d-flex justify-content-center px-3" style="top: 5%;">
             <div class="bg-white p-5 rounded shadow w-100" style="max-width: 500px;">
                 <!-- Mensaje de sesión expirada -->
-                <?php if (isset($_GET['expirada']) && $_GET['expirada'] == 1): ?>
+                <?php if (isset($_GET['expirada'])): ?>
                     <div class="alert alert-warning text-center mt-3" role="alert">
                         Tu sesión ha expirado por inactividad.
                     </div>

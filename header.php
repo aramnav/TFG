@@ -154,14 +154,13 @@ if (isset($_POST['logout'])) {
     }
 
     @media (max-width: 991.98px) {
-    .dropdown-toggle {
-        max-width: 120px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        .dropdown-toggle {
+            max-width: 120px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
-}
-
 </style>
 
 
